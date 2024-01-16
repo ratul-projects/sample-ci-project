@@ -1,0 +1,58 @@
+version: 0.2
+
+env:
+  #variables:
+  # key: "value"
+  # key: "value"
+  parameter-store:
+    DOCKER_HUB_URL: /sample-ci-project/test/docker-url
+    DOCKER_HUB_USERNAME: /sample-ci-project/test/docker-username
+    DOCKER_HUB_PASSWORD: /sample-ci-project/test/docker-password
+
+  #secrets-manager:
+  # key: secret-id:json-key:version-stage:version-id
+  # key: secret-id:json-key:version-stage:version-id
+  #exported-variables:
+  # - variable
+  # - variable
+  #git-credential-helper: yes
+#batch:
+#fast-fail: true
+#build-list:
+#build-matrix:
+#build-graph:
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18
+    #commands:
+    # - command
+    # - command
+  # pre_build:
+  #   commands:
+  #     - npm ci
+  build: commands
+    - echo "Building docker image"
+    - docker build -t docker.io/ratuldeveloper/sample-ci-project:latest .
+  #post_build:
+  #commands:
+  # - command
+  # - command
+#reports:
+#report-name-or-arn:
+#files:
+# - location
+# - location
+#base-directory: location
+#discard-paths: yes
+#file-format: JunitXml | CucumberJson
+#artifacts:
+#files:
+# - location
+# - location
+#name: $(date +%Y-%m-%d)
+#discard-paths: yes
+#base-directory: location
+#cache:
+#paths:
+# - paths
